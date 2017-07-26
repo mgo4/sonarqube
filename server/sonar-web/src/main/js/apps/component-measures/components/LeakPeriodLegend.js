@@ -17,25 +17,31 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-export type Component = {
-  isFavorite?: boolean,
-  isRecentlyBrowsed?: boolean,
-  key: string,
-  match?: string,
-  name: string,
-  organization?: string,
-  project?: string,
-  qualifier: string
-};
+// @flow
+import React from 'react';
+import moment from 'moment';
+import Tooltip from '../../../components/controls/Tooltip';
+import { getPeriodLabel, getPeriodDate } from '../../../helpers/periods';
+import { translateWithParameters } from '../../../helpers/l10n';
+import type { Period } from '../types';
 
-export type Query = {
-  metric: ?string,
-  view: string
-};
+export default function LeakPeriodLegend({ period }: { period: Period }) {
+  const label = (
+    <div className="measures-domains-leak-header">
+      {translateWithParameters('overview.leak_period_x', getPeriodLabel(period))}
+    </div>
+  );
 
-export type Period = {
-  index: number,
-  date: string,
-  mode: string,
-  parameter?: string
-};
+  if (period.mode === 'days') {
+    return label;
+  }
+
+  const date = getPeriodDate(period);
+  const fromNow = moment(date).fromNow();
+  const tooltip = fromNow + ', ' + moment(date).format('LL');
+  return (
+    <Tooltip placement="left" overlay={tooltip}>
+      {label}
+    </Tooltip>
+  );
+}

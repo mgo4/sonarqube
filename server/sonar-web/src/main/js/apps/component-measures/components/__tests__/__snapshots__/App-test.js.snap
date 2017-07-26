@@ -52,13 +52,14 @@ exports[`should render correctly 1`] = `
         <div
           className="layout-page-main-inner"
         >
-          Header
+          <MeasuresAppHeader />
         </div>
       </div>
     </div>
     <div
       className="layout-page-main-inner"
     >
+      <MeasureHeader />
       Main
     </div>
   </div>

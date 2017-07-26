@@ -25,6 +25,7 @@ import FacetItem from './FacetItem';
 import FacetItemsList from './FacetItemsList';
 import FacetItemMeasureValue from './FacetItemMeasureValue';
 import IssueTypeIcon from '../../../components/ui/IssueTypeIcon';
+import Tooltip from '../../../components/controls/Tooltip';
 import { filterMeasures, sortMeasures } from '../utils';
 import { getLocalizedMetricDomain, getLocalizedMetricName } from '../../../helpers/l10n';
 import type { MeasureEnhanced } from '../../../components/measure/types';
@@ -62,10 +63,12 @@ export default class DomainFacet extends React.PureComponent {
                 disabled={false}
                 key={measure.metric.key}
                 name={
-                  <span id={`measure-${measure.metric.key}-name`}>
-                    <IssueTypeIcon query={measure.metric.key} className="little-spacer-right" />
-                    {getLocalizedMetricName(measure.metric)}
-                  </span>
+                  <Tooltip overlay={getLocalizedMetricName(measure.metric)} mouseEnterDelay={1}>
+                    <span id={`measure-${measure.metric.key}-name`}>
+                      <IssueTypeIcon query={measure.metric.key} className="little-spacer-right" />
+                      {getLocalizedMetricName(measure.metric)}
+                    </span>
+                  </Tooltip>
                 }
                 onClick={this.props.onChange}
                 stat={<FacetItemMeasureValue measure={measure} />}

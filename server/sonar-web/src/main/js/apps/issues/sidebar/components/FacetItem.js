@@ -64,17 +64,19 @@ export default class FacetItem extends React.PureComponent {
           <span className="facet-name">
             {this.props.name}
           </span>
-          <span className="facet-stat">
-            {formattedStat}
-          </span>
+          {formattedStat != null &&
+            <span className="facet-stat">
+              {formattedStat}
+            </span>}
         </span>
       : <a className={className} data-value={this.props.value} href="#" onClick={this.handleClick}>
           <span className="facet-name">
             {this.props.name}
           </span>
-          <span className="facet-stat">
-            {formattedStat}
-          </span>
+          {formattedStat != null &&
+            <span className="facet-stat">
+              {formattedStat}
+            </span>}
         </a>;
   }
 }

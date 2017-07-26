@@ -22,6 +22,7 @@ import { groupBy, sortBy, toPairs } from 'lodash';
 import { getLocalizedMetricName } from '../../helpers/l10n';
 import { cleanQuery, parseAsString, serializeString } from '../../helpers/query';
 import { domains } from './config/domains';
+import { bubbles } from './config/bubbles';
 import type { Query } from './types';
 import type { RawQuery } from '../../helpers/query';
 import type { Measure, MeasureEnhanced } from '../../components/measure/types';
@@ -93,6 +94,10 @@ export function groupByDomains(
     },
     'name'
   ]);
+}
+
+export function hasBubbleChart(domainName: string) {
+  return bubbles[domainName] != null;
 }
 
 export const parseQuery = (urlQuery: RawQuery): Query => ({

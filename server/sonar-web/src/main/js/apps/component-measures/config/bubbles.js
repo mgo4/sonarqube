@@ -17,25 +17,11 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-export type Component = {
-  isFavorite?: boolean,
-  isRecentlyBrowsed?: boolean,
-  key: string,
-  match?: string,
-  name: string,
-  organization?: string,
-  project?: string,
-  qualifier: string
-};
-
-export type Query = {
-  metric: ?string,
-  view: string
-};
-
-export type Period = {
-  index: number,
-  date: string,
-  mode: string,
-  parameter?: string
+// @flow
+export const bubbles = {
+  Reliability: { x: 'ncloc', y: 'reliability_remediation_effort', size: 'bugs' },
+  Security: { x: 'ncloc', y: 'security_remediation_effort', size: 'vulnerabilities' },
+  Maintainability: { x: 'ncloc', y: 'sqale_index', size: 'code_smells' },
+  Coverage: { x: 'complexity', y: 'coverage', size: 'uncovered_lines' },
+  Duplications: { x: 'ncloc', y: 'duplicated_lines', size: 'duplicated_blocks' }
 };

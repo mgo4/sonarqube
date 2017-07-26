@@ -31,10 +31,3 @@ type MeasureIntern = {
 export type Measure = MeasureIntern & { metric: string };
 
 export type MeasureEnhanced = MeasureIntern & { metric: Metric, leak?: string };
-
-export type Period = {
-  index: number,
-  date: string,
-  mode: string,
-  parameter?: string
-};

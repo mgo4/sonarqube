@@ -20,13 +20,15 @@
 // @flow
 import React from 'react';
 import Helmet from 'react-helmet';
+import MeasureContent from './MeasureContent';
 import Sidebar from '../sidebar/Sidebar';
 import { parseQuery, serializeQuery } from '../utils';
+import { getLeakPeriod } from '../../../helpers/periods';
 import { translate } from '../../../helpers/l10n';
-import type { Component, Query } from '../types';
+import type { Component, Query, Period } from '../types';
 import type { RawQuery } from '../../../helpers/query';
 import type { Metrics } from '../../../store/metrics/actions';
-import type { MeasureEnhanced, Period } from '../../../components/measure/types';
+import type { MeasureEnhanced } from '../../../components/measure/types';
 import '../style.css';
 
 type Props = {|
@@ -115,6 +117,7 @@ export default class App extends React.PureComponent {
     if (this.state.loading) {
       return <i className="spinner spinner-margin" />;
     }
+
     return (
       <div className="layout-page" id="component-measures">
         <Helmet title={translate('layout.measures')} />
@@ -136,11 +139,14 @@ export default class App extends React.PureComponent {
         <div className="layout-page-main">
           <div className="layout-page-header-panel layout-page-main-header issues-main-header">
             <div className="layout-page-header-panel-inner layout-page-main-header-inner">
-              <div className="layout-page-main-inner">Header</div>
+              <div className="layout-page-main-inner">Page Actions</div>
             </div>
           </div>
 
-          <div className="layout-page-main-inner">Main</div>
+          <MeasureContent
+            className="layout-page-main-inner"
+            leakPeriod={getLeakPeriod(this.state.periods)}
+          />
         </div>
       </div>
     );
