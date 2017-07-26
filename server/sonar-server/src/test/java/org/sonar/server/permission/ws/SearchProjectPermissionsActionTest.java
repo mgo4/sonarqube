@@ -286,6 +286,7 @@ public class SearchProjectPermissionsActionTest extends BasePermissionWsTest<Sea
   private ComponentDto insertView() {
     return db.components().insertComponent(newView(db.getDefaultOrganization())
       .setUuid("752d8bfd-420c-4a83-a4e5-8ab19b13c8fc")
+      .setProjectUuid("752d8bfd-420c-4a83-a4e5-8ab19b13c8fc")
       .setName("Java")
       .setKey("Java"));
   }
@@ -298,13 +299,15 @@ public class SearchProjectPermissionsActionTest extends BasePermissionWsTest<Sea
     return db.components().insertComponent(newPrivateProjectDto(db.getDefaultOrganization(), "project-uuid-2")
       .setName("Clang")
       .setKey("clang")
-      .setUuid("ce4c03d6-430f-40a9-b777-ad877c00aa4d"));
+      .setUuid("ce4c03d6-430f-40a9-b777-ad877c00aa4d")
+      .setProjectUuid("ce4c03d6-430f-40a9-b777-ad877c00aa4d"));
   }
 
   private ComponentDto insertJdk7() {
     return db.components().insertComponent(ComponentTesting.newPublicProjectDto(db.getDefaultOrganization())
       .setName("JDK 7")
       .setKey("net.java.openjdk:jdk7")
-      .setUuid("0bd7b1e7-91d6-439e-a607-4a3a9aad3c6a"));
+      .setUuid("0bd7b1e7-91d6-439e-a607-4a3a9aad3c6a")
+      .setProjectUuid("0bd7b1e7-91d6-439e-a607-4a3a9aad3c6a"));
   }
 }
