@@ -1,0 +1,15 @@
+.domain-measures-value .rating {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  font-size: 12px;
+}
+
+.domain-measures-leak {
+  background-color: #fbf3d5;
+  border: 1px solid #eae3c7;
+  padding: 4px 5px;
+  margin: -4px -5px;
+}
